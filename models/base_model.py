@@ -3,7 +3,8 @@
 Contains the class BaseModel defining all common attributes/
 for other classes
 """
-import uuid, datetime
+import uuid
+import datetime
 
 
 class BaseModel:
@@ -23,7 +24,7 @@ class BaseModel:
         """Returns a string representation of the class"""
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
-    
+
     def save(self):
         """Updates the public instance attribute 'updated_at' with
           current datetime"""
@@ -34,7 +35,7 @@ class BaseModel:
         of the object"""
         my_dict = {}
         my_dict = dict(**self.__dict__)
-        
+
         my_dict['__class__'] = self.__class__.__name__
         my_dict['created_at'] = self.created_at.isoformat()
         my_dict['updated_at'] = self.updated_at.isoformat()
