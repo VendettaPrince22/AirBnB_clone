@@ -38,7 +38,7 @@ class BaseModel:
             self.my_number = kwargs['my_number']
         if 'name' in kwargs:
             self.name = kwargs['name']
-        
+
         storage.new(self)
 
     def __str__(self):
