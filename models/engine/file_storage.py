@@ -9,7 +9,7 @@ import os
 
 class FileStorage:
     """Defines an object with template FileStorage"""
-    __file_path = "/home/kali/Documents/ALX/AirBnB_clone/file.json"
+    __file_path = "AirBnB_clone/file.json"
     __objects = {}
 
     def all(self):
@@ -18,8 +18,9 @@ class FileStorage:
 
     def new(self, obj):
         """Sets in '__objects' the obj with standard key"""
-        self.__objects[f"{obj.__class__.__name__}.\
-                       {obj.__dict__['id']}"] = obj.__dict__
+        my_obj = obj.__dict__
+        self.__objects[f"{obj.__class__.__name__}.{obj.id}"]\
+            = my_obj
 
     def save(self):
         """Serializes '__objects' to JSON file '__file_path' """
