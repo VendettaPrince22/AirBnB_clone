@@ -5,6 +5,7 @@ deserializes JSON file to instances
 """
 import json
 import os
+import models.base_model
 
 
 class FileStorage:
@@ -25,14 +26,17 @@ class FileStorage:
     def save(self):
         """Serializes '__objects' to JSON file '__file_path' """
         with open(FileStorage.__file_path, 'w') as f:
-            temp = {}
-            temp.update(FileStorage.__objects)
-            for key, val in temp.items():
-                temp[key] = val.to_dict()
-            json.dump(temp, f)
+            new_dict = {}
+            for key in FileStorage.__objects:
+                object_dict = FileStorage.__objects[key]
+                new_dict.update({key: object_dict.to_dict()})
+            json.dump(new_dict, f)
 
     def reload(self):
         """Deserializes the JSON file to '__objects' """
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
-                FileStorage.__objects = json.load(f)
+                new_dict = json.load(f)
+                for key in new_dict:
+                    dict_value = models.base_model.BaseModel(**new_dict[key])
+                    FileStorage.__objects[key] = dict_value

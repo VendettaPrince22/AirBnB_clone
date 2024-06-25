@@ -5,7 +5,7 @@ for other classes
 """
 import uuid
 import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -40,7 +40,7 @@ class BaseModel:
             self.name = kwargs['name']
 
         if not kwargs:
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the class"""
@@ -51,7 +51,7 @@ class BaseModel:
         """Updates the public instance attribute 'updated_at' with
           current time"""
         self.updated_at = datetime.datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all key/values of __dict__
