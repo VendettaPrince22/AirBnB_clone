@@ -9,7 +9,7 @@ import os
 
 class FileStorage:
     """Defines an object with template FileStorage"""
-    __file_path = "AirBnB_clone/file.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
