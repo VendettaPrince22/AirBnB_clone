@@ -39,7 +39,8 @@ class BaseModel:
         if 'name' in kwargs:
             self.name = kwargs['name']
 
-        storage.new(self)
+        if not kwargs:
+            storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the class"""
@@ -56,7 +57,7 @@ class BaseModel:
         """Returns a dictionary containing all key/values of __dict__
         of the object"""
         my_dict = {}
-        my_dict = dict(**self.__dict__)
+        my_dict.update(self.__dict__)
 
         my_dict['__class__'] = self.__class__.__name__
         my_dict['created_at'] = self.created_at.isoformat()
