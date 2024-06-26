@@ -3,6 +3,7 @@
 import cmd
 import json
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -17,6 +18,10 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = BaseModel()
                 new_instance.save()
                 print(new_instance.id)
+            elif param == 'User':
+                new_instance = User()
+                new_instance.save()
+                print(new_instance.id)
             else:
                 print("** class doesn't exist **")
         else:
@@ -29,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
             my_dict = storage.all()
             line = param_name.split(" ")
             instance_name = line[0]
-            if instance_name == 'BaseModel':
+            if instance_name == 'BaseModel' or instance_name == 'User':
                 if len(line) == 2:
                     instance_id = line[1]
                     id_list = []
@@ -54,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
             line = params.split(" ")
             my_dict = storage.all()
             instance_name = line[0]
-            if instance_name == 'BaseModel':
+            if instance_name == 'BaseModel' or instance_name == 'User':
                 if len(line) == 2:
                     instance_id = line[1]
                     id_list = []
@@ -80,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, params):
         """Prints all string rep. of all instances of a class
         """
-        if params != 'BaseModel':
+        if params != 'BaseModel' and params != 'User':
             print("** class doesn't exist **")
         else:
             my_dict = storage.all()
@@ -95,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         if params:
             line = params.split(" ")
             instance_name = line[0]
-            if instance_name == 'BaseModel':
+            if instance_name == 'BaseModel' or instance_name == 'User':
                 if len(line) > 1:
                     instance_id = line[1]
                     my_dict = storage.all()

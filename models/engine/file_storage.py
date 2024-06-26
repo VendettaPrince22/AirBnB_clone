@@ -6,6 +6,7 @@ deserializes JSON file to instances
 import json
 import os
 import models.base_model
+import models.user
 
 
 class FileStorage:
@@ -34,9 +35,13 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to '__objects' """
+        classes = {
+            'BaseModel': models.base_model.BaseModel,
+            'User': models.user.User
+        }
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
                 new_dict = json.load(f)
                 for key in new_dict:
-                    dict_value = models.base_model.BaseModel(**new_dict[key])
+                    dict_value = classes[new_dict[key]['__class__']](**new_dict[key])
                     FileStorage.__objects[key] = dict_value
