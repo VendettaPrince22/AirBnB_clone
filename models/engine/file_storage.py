@@ -30,7 +30,7 @@ class FileStorage:
             for key in FileStorage.__objects:
                 object_dict = FileStorage.__objects[key]
                 new_dict.update({key: object_dict.to_dict()})
-            json.dump(new_dict, f)
+            json.dump(new_dict, f, indent=2)
 
     def reload(self):
         """Deserializes the JSON file to '__objects' """

@@ -17,29 +17,23 @@ class BaseModel:
     """
     def __init__(self, *args, **kwargs):
         """Initializes the object BaseModel"""
-        if 'id' in kwargs:
-            self.id = kwargs['id']
+        if len(kwargs) != 0:
+            del kwargs['__class__']
+            for key in kwargs:
+                if key == 'created_at':
+                    self.created_at = datetime.datetime.fromisoformat(
+                        kwargs[key])
+                elif key == 'updated_at':
+                    self.updated_at = datetime.datetime.fromisoformat(
+                        kwargs[key])
+                else:
+                    self.__dict__[key] = kwargs[key]
+
         else:
             self.id = str(uuid.uuid4())
-
-        if 'created_at' in kwargs:
-            self.created_at = \
-                datetime.datetime.fromisoformat(kwargs['created_at'])
-        else:
             self.created_at = datetime.datetime.now()
-
-        if 'updated_at' in kwargs:
-            self.updated_at = \
-                datetime.datetime.fromisoformat(kwargs['updated_at'])
-        else:
             self.updated_at = datetime.datetime.now()
 
-        if 'my_number' in kwargs:
-            self.my_number = kwargs['my_number']
-        if 'name' in kwargs:
-            self.name = kwargs['name']
-
-        if not kwargs:
             models.storage.new(self)
 
     def __str__(self):
