@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
         else:
-            print("** class name doesn't exist **")
+            print("** class name missing **")
 
     def do_destroy(self, params):
         """Deletes an instance based on class name and id
@@ -71,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
                             storage.new(my_dict[key])
                         storage.save()
                 else:
-                    print("** instance id is missing **")
+                    print("** instance id missing **")
             else:
                 print("** class doesn't exist **")
         else:
