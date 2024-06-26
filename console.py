@@ -1,10 +1,14 @@
 #!/usr/bin/python3
 """Contains the entry point of the command interpreter"""
 import cmd
-import json
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -22,6 +26,26 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = User()
                 new_instance.save()
                 print(new_instance.id)
+            elif param == 'Place':
+                new_instance = Place()
+                new_instance.save()
+                print(new_instance.id)
+            elif param == 'State':
+                new_instance = State()
+                new_instance.save()
+                print(new_instance.id)
+            elif param == 'City':
+                new_instance = City()
+                new_instance.save()
+                print(new_instance.id)
+            elif param == 'Amenity':
+                new_instance = Amenity()
+                new_instance.save()
+                print(new_instance.id)
+            elif param == 'Review':
+                new_instance = Review()
+                new_instance.save()
+                print(new_instance.id)
             else:
                 print("** class doesn't exist **")
         else:
@@ -34,7 +58,13 @@ class HBNBCommand(cmd.Cmd):
             my_dict = storage.all()
             line = param_name.split(" ")
             instance_name = line[0]
-            if instance_name == 'BaseModel' or instance_name == 'User':
+            if instance_name == 'BaseModel'\
+                or instance_name == 'User'\
+                or instance_name == 'Place'\
+                or instance_name == 'State'\
+                or instance_name == 'City'\
+                or instance_name == 'Amenity'\
+                    or instance_name == 'Review':
                 if len(line) == 2:
                     instance_id = line[1]
                     id_list = []
@@ -59,7 +89,13 @@ class HBNBCommand(cmd.Cmd):
             line = params.split(" ")
             my_dict = storage.all()
             instance_name = line[0]
-            if instance_name == 'BaseModel' or instance_name == 'User':
+            if instance_name == 'BaseModel'\
+                or instance_name == 'User'\
+                or instance_name == 'Place'\
+                or instance_name == 'State'\
+                or instance_name == 'City'\
+                or instance_name == 'Amenity'\
+                    or instance_name == 'Review':
                 if len(line) == 2:
                     instance_id = line[1]
                     id_list = []
@@ -85,7 +121,13 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, params):
         """Prints all string rep. of all instances of a class
         """
-        if params != 'BaseModel' and params != 'User':
+        if params != 'BaseModel'\
+            and params != 'User'\
+            and params != 'Place'\
+            and params != 'State'\
+            and params != 'City'\
+            and params != 'Amenity'\
+                and params != 'Review':
             print("** class doesn't exist **")
         else:
             my_dict = storage.all()
@@ -100,7 +142,13 @@ class HBNBCommand(cmd.Cmd):
         if params:
             line = params.split(" ")
             instance_name = line[0]
-            if instance_name == 'BaseModel' or instance_name == 'User':
+            if instance_name == 'BaseModel'\
+                or instance_name == 'User'\
+                or instance_name == 'Place'\
+                or instance_name == 'State'\
+                or instance_name == 'City'\
+                or instance_name == 'Amenity'\
+                    or instance_name == 'Review':
                 if len(line) > 1:
                     instance_id = line[1]
                     my_dict = storage.all()

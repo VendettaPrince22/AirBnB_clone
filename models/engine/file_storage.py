@@ -7,6 +7,11 @@ import json
 import os
 import models.base_model
 import models.user
+import models.amenity
+import models.city
+import models.place
+import models.review
+import models.state
 
 
 class FileStorage:
@@ -37,7 +42,12 @@ class FileStorage:
         """Deserializes the JSON file to '__objects' """
         classes = {
             'BaseModel': models.base_model.BaseModel,
-            'User': models.user.User
+            'User': models.user.User,
+            'Amenity': models.amenity.Amenity,
+            'Place': models.place.Place,
+            'State': models.state.State,
+            'City': models.city.City,
+            'Review': models.review.Review
         }
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as f:
