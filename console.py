@@ -71,7 +71,8 @@ class HBNBCommand(cmd.Cmd):
                     for key in my_dict:
                         val = my_dict[key]
                         id_list.append(val.id)
-                        if val.id == instance_id:
+                        if val.id == instance_id and\
+                                val.__class__.__name__ == instance_name:
                             print(val)
                     if instance_id not in id_list:
                         print("** no instance found **")
