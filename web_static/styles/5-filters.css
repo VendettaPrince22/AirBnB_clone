@@ -8,26 +8,41 @@
         align-items: center;
         justify-content: space-between;
 }
-.filters .locations {
+.locations {
         height: 100%;
         width: 25%;
         border-right: 1px solid #DDDDDD;
-        margin-left: 50px;
+        padding-left: 50px;
 }
-.filters h3 {
+.locations h3 {
         font-weight: 600;
         margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
 }
-.filters .amenities {
+.locations h4 {
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 0;
+        padding-top: 0;
+}
+.amenities {
         height: 100%;
         width: 25%;
-        margin-left: 0px;
+        margin-left: 10px;
 }
-.filters h4 {
+.amenities h3 {
+        font-weight: 600;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+}
+.amenities h4 {
         font-weight: 400;
         font-size: 14px;
         margin-top: 0;
 }
+
 .filters button {
         font-size: 18px;
         background-color: #FF5A5F;
