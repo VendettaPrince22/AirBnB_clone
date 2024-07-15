@@ -74,6 +74,8 @@ class HBNBCommand(cmd.Cmd):
                         if val.id == instance_id and\
                                 val.__class__.__name__ == instance_name:
                             print(val)
+                        else:
+                            print("** no instance found **")
                     if instance_id not in id_list:
                         print("** no instance found **")
                 else:
