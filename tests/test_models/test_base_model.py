@@ -20,7 +20,9 @@ class TestBaseModel(unittest.TestCase):
             self.assertIn(model_id, my_dict)
 
     def test_to_dict(self):
-        pass
+        my_dict = self.my_model.__dict__
+        for key in my_dict.keys():
+            self.assertIn(key, self.my_model.to_dict())
 
 
 if __name__ == "__main__":
