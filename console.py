@@ -104,13 +104,12 @@ class HBNBCommand(cmd.Cmd):
                     id_list = []
                     for key in my_dict:
                         val = my_dict[key]
-                        id_list.append(val.id)
                         if val.id == instance_id and\
                                 val.__class__.__name__ == instance_name:
                             key_del = key
                         else:
-                            print("** no instance found **")
-                    if instance_id not in id_list:
+                            id_list.append(val.id)
+                    if instance_id in id_list:
                         print("** no instance found **")
                     else:
                         del my_dict[key_del]
