@@ -122,6 +122,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string rep. of all instances of a class
         """
         if params != 'BaseModel'\
+            and params != ''\
             and params != 'User'\
             and params != 'Place'\
             and params != 'State'\
